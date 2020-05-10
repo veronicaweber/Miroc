@@ -53,12 +53,12 @@ origin="1/01/1950"
 enddate="12/01/2014"
 miroc_clt_time_1950_2014 <- seq.dates(origin, enddate, by = "months") 
   
-# Time coordinate for later 21st century part of run from 2015 - 2010 -BUT let's narrow down the historical period to just focus on 2015 - 2055 (like we did for BCC Model )
+# Time coordinate for later 21st century part of run from 2015 - 2010 
 miroc_clt_15_00_time <- ncvar_get(miroc_clt_ssp_2015_2100,"time")
 miroc_clt_15_00_tunits <- ncatt_get(miroc_clt_ssp_2015_2100,"time","units")
 origin="1/01/2015"
-enddate="12/01/2055"
-miroc_clt_time_2015_2055 <- seq.dates(origin, enddate, by="months")
+enddate="12/01/2100"
+miroc_clt_time_2015_2100 <- seq.dates(origin, enddate, by="months")
 
 
 # Read in the lat and lon coordinates from ONLY ONE of the data files (they're slices of output from the same climate model, and therefore use the same spatial grid). 
@@ -104,8 +104,8 @@ miroc_ts_time_1950_2014 <- seq.dates(origin, enddate, by = "months")
 miroc_ts_2015_2200_time <- ncvar_get(miroc_ts_ssp_2015_2100,"time")
 miroc_ts_2015_2100_tunits <- ncatt_get(miroc_ts_ssp_2015_2100,"time","units")
 origin="1/01/2015"
-enddate="12/01/2055"
-miroc_ts_time_2015_2055 <- seq.dates(origin, enddate, by="months")
+enddate="12/01/2100"
+miroc_ts_time_2015_2100 <- seq.dates(origin, enddate, by="months")
 
 # Read in the lat and lon coordinates from ONLY ONE of the data files (they're slices of output from the same climate model, and therefore use the same spatial grid). 
 lon <- ncvar_get(miroc_ts_hist_1950_2014,"lon")
@@ -115,7 +115,7 @@ nlat <- dim(lat)
 
 # Convert TS into Celcius by subtracting 273.15 (original units are in Kelvin)
 ts_hist_1950_2014 <- ncvar_get(miroc_ts_hist_1950_2014, "ts")-273.15
-ts_hist_2015_2055 <- ncvar_get(miroc_ts_ssp_2015_2100, "ts")-273.15
+ts_hist_2015_2100 <- ncvar_get(miroc_ts_ssp_2015_2100, "ts")-273.15
 
 # Align w Ivanpah coordinates
 lats = which(lat >= 35 & lat <= 36)
@@ -157,8 +157,8 @@ miroc_rsdscs_time_1950_2014 <- seq.dates(origin, enddate, by = "months")
 miroc_rsdscs_2015_2100_time <- ncvar_get(miroc_rsdscs_ssp_2015_2100,"time")
 miroc_rsdscs_2015_2100_tunits <- ncatt_get(miroc_rsdscs_ssp_2015_2100,"time","units")
 origin="1/01/2015"
-enddate="12/01/2055"
-miroc_rsdscs_time_2015_2055 <- seq.dates(origin, enddate, by="months")
+enddate="12/01/2100"
+miroc_rsdscs_time_2015_2100 <- seq.dates(origin, enddate, by="months")
 
 # Read in the lat and lon coordinates from ONLY ONE of the data files (they're slices of output from the same climate model, and therefore use the same spatial grid). 
 lon <- ncvar_get(miroc_rsdscs_hist_1950_2014,"lon")
